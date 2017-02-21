@@ -27,7 +27,7 @@ module "alb" {
 }
 
 module "target_group" {
-   source = "../dev/bashton/repos/tf-aws-alb/target_group"
+   source = "../modules/tf-aws-alb/target_group"
    envname = "dev"
    envtype = "nonprod"
    service = "test"
@@ -40,7 +40,7 @@ module "target_group" {
 
 
 module "listener" {
-   source = "../dev/bashton/repos/tf-aws-alb/listener"
+   source = "../modules/tf-aws-alb/listener"
    load_balancer_arn = "${module.alb.alb_arn}"
    listener_port = "8080"
    target_group_arn = "${module.target_group.alb_target_group_arn}"
