@@ -24,20 +24,8 @@ resource "aws_alb_target_group" "alb_target_group" {
   }
 
   tags {
-    key                 = "Name"
-    value               = "${var.target_name}"
-    propagate_at_launch = true
-  }
-
-  tags {
-    key                 = "Environment"
-    value               = "${var.envname}"
-    propagate_at_launch = true
-  }
-
-  tags {
-    key                 = "Service"
-    value               = "${var.service}"
-    propagate_at_launch = true
+    Name        = "${var.target_name}"
+    Environment = "${var.envname}"
+    Service     = "${var.service}"
   }
 }
