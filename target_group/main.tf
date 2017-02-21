@@ -1,4 +1,5 @@
 resource "aws_alb_target_group" "alb_target_group" {
+  count    = "${var.is_enabled}"
   name     = "${var.target_name}"
   port     = "${var.target_port}"
   protocol = "${var.target_protocol}"

@@ -1,5 +1,6 @@
 variable "is_enabled" {
-  default = true
+  description = "This is used only when module is invoked from the main ALB module"
+  default     = true
 }
 
 variable "load_balancer_arn" {

@@ -1,8 +1,13 @@
+# Target group variables
 variable "envname" {}
 variable "envtype" {}
 variable "service" {}
 
-# Target group variables
+variable "is_enabled" {
+  description = "This is used only when module is invoked from the main ALB module"
+  default     = true
+}
+
 variable "target_name" {
   description = "(Required) The name of the target group."
 }
