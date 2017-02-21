@@ -35,20 +35,6 @@ variable "enable_deletion_protection" {
   default     = false
 }
 
-variable "access_logs" {
-  description = "If true, enables an access logs"
-}
-
-variable "access_logs_bucket" {
-  description = "The S3 bucket name to store the logs in. Valid only if access_logs is set to true"
-  default     = "None"
-}
-
-variable "access_logs_bucket_prefix" {
-  description = "The S3 bucket prefix. Logs are stored in the root if not configured"
-  default     = "/"
-}
-
 # ----------------------------------------
 # Target group variables
 # ----------------------------------------
