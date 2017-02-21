@@ -10,20 +10,11 @@ resource "aws_alb" "alb" {
   name                       = "${var.name_prefix != "" ? var.name_prefix : "${var.name}-alb"}"
 
   tags {
-    key                 = "Name"
-    value               = "${var.name}"
-    propagate_at_launch = true
+    Name        = "${var.name}"
+    Environment = "${var.envname}"
+    Service     = "${var.service}"
   }
+}
 
-  tags {
-    key                 = "Environment"
-    value               = "${var.envname}"
-    propagate_at_launch = true
-  }
 
-  tags {
-    key                 = "Service"
-    value               = "${var.service}"
-    propagate_at_launch = true
-  }
 }
