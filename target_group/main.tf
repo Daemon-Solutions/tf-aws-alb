@@ -11,7 +11,7 @@ resource "aws_alb_target_group" "alb_target_group" {
     path                = "${var.health_check_path}"
     port                = "${var.health_check_port}"
     protocol            = "${var.health_check_protocol}"
-    timeout             = "${health_check_timeout}"
+    timeout             = "${var.health_check_timeout}"
     healthy_threshold   = "${var.health_check_healthy_threshold}"
     unhealthy_threshold = "${var.health_check_unhealthy_threshold}"
     matcher             = "${var.health_check_matcher}"
