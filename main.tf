@@ -13,5 +13,29 @@ resource "aws_alb" "alb" {
   }
 }
 
+module "http_target_group" {
+  is_enabled  = "${var.enable_http_listener == 1 || var.enable_https_listener == 1 ? 1 : 0 }"
+  source      = "./target_group"
+  envname     = "${var.envname}"
+  envtype     = "${var.envtype}"
+  service     = "${var.service}"
+  target_name = "${var.envname}-${var.service}-http-tg"
+  vpc_id      = "${var.vpc_id}"
+}
 
+module "http_listener" {
+  is_enabled        = "${var.enable_http_listener}"
+  source            = "./listener"
+  load_balancer_arn = "${aws_alb.alb.arn}"
+  target_group_arn  = "${module.http_target_group.alb_target_group_arn}"
+}
+
+module "https_listener" {
+  is_enabled               = "${var.enable_https_listener}"
+  source                   = "./listener"
+  listener_port            = "443"
+  listener_protocol        = "HTTPS"
+  listener_certificate_arn = "${var.certificate_arn}"
+  load_balancer_arn        = "${aws_alb.alb.arn}"
+  target_group_arn         = "${module.http_target_group.alb_target_group_arn}"
 }
