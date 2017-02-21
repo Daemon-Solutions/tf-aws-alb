@@ -1,5 +1,5 @@
 resource "aws_alb" "alb" {
-  name                       = "${var.name_prefix != "" ? var.name_prefix : "${var.name}-alb"}"
+  name                       = "${var.name}-alb"
   internal                   = "${var.internal}"
   security_groups            = ["${var.security_groups}"]
   subnets                    = "${var.subnets}"

@@ -6,11 +6,6 @@ variable "name" {
   description = "The name of the ALB. This name must be unique within your AWS account, can have a maximum of 32 characters, must contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen. If not specified, Terraform will autogenerate a name beginning with tf-lb."
 }
 
-variable "name_prefix" {
-  description = "Creates a unique name beginning with the specified prefix. Conflicts with name"
-  default     = ""
-}
-
 variable "enable_http_listener" {
   description = "If true, enable default HTTP target group and listener"
   default     = false
