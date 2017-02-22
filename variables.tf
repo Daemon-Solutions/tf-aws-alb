@@ -53,3 +53,18 @@ variable "vpc_id" {
   description = "(Required) The identifier of the VPC in which to create the target group."
   default     = ""
 }
+
+variable "target_port"
+  description = "The port on which targets receive traffic, unless overridden when registering a specific target"
+  default = 80
+}
+
+variable "health_check_path" {
+  description = " The destination for the health check request. Default /."
+  default     = "/"
+}
+
+variable "health_check_port" {
+  description = "The port to use to connect with the target. Valid values are either ports 1-65536, or traffic-port. Defaults to traffic-port."
+  default     = "80"
+}
