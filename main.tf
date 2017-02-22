@@ -21,6 +21,7 @@ module "http_target_group" {
   service           = "${var.service}"
   target_name       = "${var.envname}-${var.service}-http-tg"
   vpc_id            = "${var.vpc_id}"
+  target_port       = "${var.target_port}"
   health_check_port = "${var.target_health_check_port}"
   health_check_path = "${var.target_health_check_port}"
 }
