@@ -54,9 +54,9 @@ variable "vpc_id" {
   default     = ""
 }
 
-variable "target_port"
+variable "target_port" {
   description = "The port on which targets receive traffic, unless overridden when registering a specific target"
-  default = 80
+  default     = 80
 }
 
 variable "target_health_check_path" {
