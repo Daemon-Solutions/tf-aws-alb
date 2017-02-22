@@ -59,12 +59,12 @@ variable "target_port"
   default = 80
 }
 
-variable "health_check_path" {
+variable "target_health_check_path" {
   description = " The destination for the health check request. Default /."
   default     = "/"
 }
 
-variable "health_check_port" {
+variable "target_health_check_port" {
   description = "The port to use to connect with the target. Valid values are either ports 1-65536, or traffic-port. Defaults to traffic-port."
   default     = "80"
 }
