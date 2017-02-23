@@ -23,7 +23,7 @@ module "http_target_group" {
   vpc_id            = "${var.vpc_id}"
   target_port       = "${var.target_port}"
   health_check_port = "${var.target_health_check_port}"
-  health_check_path = "${var.target_health_check_port}"
+  health_check_path = "${var.target_health_check_path}"
 }
 
 module "http_listener" {
