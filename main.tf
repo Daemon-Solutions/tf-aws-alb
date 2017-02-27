@@ -14,13 +14,16 @@ resource "aws_alb" "alb" {
 }
 
 module "http_target_group" {
-  is_enabled  = "${var.enable_http_listener == 1 || var.enable_https_listener == 1 ? 1 : 0 }"
-  source      = "./target_group"
-  envname     = "${var.envname}"
-  envtype     = "${var.envtype}"
-  service     = "${var.service}"
-  target_name = "${var.envname}-${var.service}-http-tg"
-  vpc_id      = "${var.vpc_id}"
+  is_enabled        = "${var.enable_http_listener == 1 || var.enable_https_listener == 1 ? 1 : 0 }"
+  source            = "./target_group"
+  envname           = "${var.envname}"
+  envtype           = "${var.envtype}"
+  service           = "${var.service}"
+  target_name       = "${var.envname}-${var.service}-http-tg"
+  vpc_id            = "${var.vpc_id}"
+  target_port       = "${var.target_port}"
+  health_check_port = "${var.target_health_check_port}"
+  health_check_path = "${var.target_health_check_path}"
 }
 
 module "http_listener" {
