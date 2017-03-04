@@ -6,6 +6,12 @@ resource "aws_alb" "alb" {
   idle_timeout               = "${var.idle_timeout}"
   enable_deletion_protection = "${var.enable_deletion_protection}"
 
+  access_logs {
+    enabled = true
+    bucket  = "${var.access_logs_bucket}"
+    prefix  = "${var.access_logs_prefix}"
+  }
+
   tags {
     Name        = "${var.name}"
     Environment = "${var.envname}"

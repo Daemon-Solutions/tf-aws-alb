@@ -42,6 +42,16 @@ variable "enable_deletion_protection" {
   default     = false
 }
 
+# logging variables
+variable "access_logs_bucket" {
+  description = "The S3 bucket name to store the logs in. Valid only if access_logs is set to true"
+}
+
+variable "access_logs_prefix" {
+  description = "The S3 bucket prefix. Logs are stored in the root if not configured"
+  default     = "alb_logs"
+}
+
 # Below variables are used to configure default target group and listeners
 
 variable "certificate_arn" {

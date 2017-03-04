@@ -1,7 +1,7 @@
 tf-aws-alb
 ==========
 
-AWS Application Load-Balancer (ALB) - Terraform Module
+AWS Application Load-Balancer (ALB) with s3 logging enabled - Terraform Module
 
 Usage
 -----
@@ -23,6 +23,8 @@ module "alb" {
    enable_https_listener = true
    vpc_id = "${var.vpc_id}"
    certificate_arn = "arn:aws:acm:eu-west-2:1234567890:certificate/0d549bc3-17c2-4124-82e4-8dcd2d58fe8a"
+   access_logs_bucket = "my-alb-logs-bucket"
+   access_logs_prefix = "alb_logs"
 
 }
 
@@ -62,6 +64,8 @@ Variables
 - `subnets` - A list of subnet IDs to attach to the LB.
 - `idle_timeout` - The time in seconds that the connection is allowed to be idle.
 - `enable_deletion_protection` - If true, deletion of the load balancer will be disabled via the AWS API. This will prevent Terraform from deleting the load balancer. Defaults to false.
+- `access_logs_bucket` - The S3 bucket name to store the logs in.
+- `access_logs_prefix` - The S3 bucket prefix. Logs are stored in the root if not configured
 
 
 _Below variables are used to configure default target group and listeners:_
