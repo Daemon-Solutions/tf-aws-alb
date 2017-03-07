@@ -25,6 +25,7 @@ module "alb" {
    certificate_arn = "arn:aws:acm:eu-west-2:1234567890:certificate/0d549bc3-17c2-4124-82e4-8dcd2d58fe8a"
    access_logs_bucket = "my-alb-logs-bucket"
    access_logs_prefix = "alb_logs"
+   http_stickiness = true
 
 }
 
@@ -66,6 +67,7 @@ Variables
 - `enable_deletion_protection` - If true, deletion of the load balancer will be disabled via the AWS API. This will prevent Terraform from deleting the load balancer. Defaults to false.
 - `access_logs_bucket` - The S3 bucket name to store the logs in.
 - `access_logs_prefix` - The S3 bucket prefix. Logs are stored in the root if not configured
+- `http_stickiness` - If true, enable stickiness for the default HTTP/s listener's target group (default `false`)
 
 
 _Below variables are used to configure default target group and listeners:_
