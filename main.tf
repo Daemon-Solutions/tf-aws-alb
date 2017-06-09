@@ -30,6 +30,9 @@ module "http_target_group" {
   target_port       = "${var.target_port}"
   health_check_port = "${var.target_health_check_port}"
   health_check_path = "${var.target_health_check_path}"
+  stickiness        = "${var.http_stickiness}"
+  stickiness_type   = "${var.http_stickiness_type}"
+  stickiness_cookie_duration = "${var.http_stickiness_cookie_duration}"
 }
 
 module "http_listener" {

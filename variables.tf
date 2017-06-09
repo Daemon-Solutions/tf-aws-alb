@@ -78,3 +78,20 @@ variable "target_health_check_port" {
   description = "The port to use to connect with the target. Valid values are either ports 1-65536, or traffic-port. Defaults to traffic-port."
   default     = "80"
 }
+
+# Stickiness for the default HTTP listener's target group
+variable "http_stickiness" {
+  description = "(Optional) If true, enables stickiness"
+  default     = false
+}
+
+variable "http_stickiness_type" {
+  description = "(Required) The type of sticky sessions. The only current possible value is lb_cookie."
+  default     = "lb_cookie"
+}
+
+variable "http_stickiness_cookie_duration" {
+  description = "(Optional) The time period, in seconds, during which requests from a client should be routed to the same target. After this time period expires, the load balancer-generated cookie is considered stale. The range is 1 second to 1 week (604800 seconds). The default value is 1 day (86400 seconds)."
+  default     = "86400"
+}
+
