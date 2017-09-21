@@ -1,5 +1,6 @@
 # Target group variables
 variable "envname" {}
+
 variable "envtype" {}
 variable "service" {}
 
