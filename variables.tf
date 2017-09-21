@@ -95,3 +95,7 @@ variable "http_stickiness_cookie_duration" {
   default     = "86400"
 }
 
+variable "deregistration_delay" {
+  description = "(Optional) The amount time for Elastic Load Balancing to wait before changing the state of a deregistering target from draining to unused. The range is 0-3600 seconds. The default value is 300 seconds."
+  default     = "300"
+}
