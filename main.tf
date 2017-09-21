@@ -33,6 +33,7 @@ module "http_target_group" {
   stickiness        = "${var.http_stickiness}"
   stickiness_type   = "${var.http_stickiness_type}"
   stickiness_cookie_duration = "${var.http_stickiness_cookie_duration}"
+  deregistration_delay = "${var.deregistration_delay}"
 }
 
 module "http_listener" {
