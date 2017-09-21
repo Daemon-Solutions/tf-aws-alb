@@ -68,6 +68,7 @@ Variables
 - `access_logs_bucket` - The S3 bucket name to store the logs in.
 - `access_logs_prefix` - The S3 bucket prefix. Logs are stored in the root if not configured
 - `http_stickiness` - If true, enable stickiness for the default HTTP/s listener's target group (default `false`)
+- `deregistration_delay` - Sets the delay the Load Balancer uses before moving a machine from deregistered to unused.
 
 
 _Below variables are used to configure default target group and listeners:_
