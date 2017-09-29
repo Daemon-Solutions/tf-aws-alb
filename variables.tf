@@ -47,6 +47,11 @@ variable "access_logs_bucket" {
   description = "The S3 bucket name to store the logs in. Valid only if access_logs is set to true"
 }
 
+variable "access_logs_enabled" {
+  description = "Enable or disable logs"
+  default     = "true"
+}
+
 variable "access_logs_prefix" {
   description = "The S3 bucket prefix. Logs are stored in the root if not configured"
   default     = "alb_logs"
