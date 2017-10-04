@@ -7,7 +7,7 @@ resource "aws_alb" "alb" {
   enable_deletion_protection = "${var.enable_deletion_protection}"
 
   access_logs {
-    enabled = true
+    enabled = "${var.access_logs_enabled}"
     bucket  = "${var.access_logs_bucket}"
     prefix  = "${var.access_logs_prefix}"
   }
