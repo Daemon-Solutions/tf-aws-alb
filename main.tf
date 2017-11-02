@@ -23,7 +23,6 @@ module "http_target_group" {
   is_enabled                 = "${var.enable_http_listener == 1 || var.enable_https_listener == 1 ? 1 : 0 }"
   source                     = "./target_group"
   envname                    = "${var.envname}"
-  envtype                    = "${var.envtype}"
   service                    = "${var.service}"
   target_name                = "${var.envname}-${var.service}-http-tg"
   vpc_id                     = "${var.vpc_id}"

@@ -1,5 +1,4 @@
 variable "envname" {}
-variable "envtype" {}
 variable "service" {}
 
 variable "name" {
