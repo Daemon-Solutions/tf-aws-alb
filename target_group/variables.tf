@@ -1,7 +1,6 @@
 # Target group variables
 variable "envname" {}
 
-variable "envtype" {}
 variable "service" {}
 
 variable "is_enabled" {

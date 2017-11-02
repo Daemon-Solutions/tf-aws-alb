@@ -14,7 +14,6 @@ provider "aws" {
 module "alb" {
    source = "../modules/tf-aws-alb"
    envname = "dev"
-   envtype = "nonprod"
    service = "test"
    name = "test"
    subnets = ["subnet-51353829", "subnet-e65d70ac"]
@@ -32,7 +31,6 @@ module "alb" {
 module "target_group" {
    source = "../modules/tf-aws-alb/target_group"
    envname = "dev"
-   envtype = "nonprod"
    service = "test"
    target_name  = "tg-8080"
    target_port = "8080"
