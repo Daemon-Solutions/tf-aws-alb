@@ -3,9 +3,9 @@
 # arn - The ARN of the listener (matches id)
 
 output "alb_listener_id" {
-  value = "${aws_alb_listener.alb_listener.id}"
+  value = "${element(concat(aws_alb_listener.alb_listener.*.id, list("")), 0)}"
 }
 
 output "alb_listener_arn" {
-  value = "${aws_alb_listener.alb_listener.arn}"
+  value = "${element(concat(aws_alb_listener.alb_listener.*.arn, list("")), 0)}"
 }
