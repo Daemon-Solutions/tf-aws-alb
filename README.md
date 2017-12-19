@@ -81,6 +81,9 @@ Outputs
 - `alb_arn` - The ARN of the load balancer (matches id).
 - `alb_arn_suffix` - The ARN suffix for use with CloudWatch Metrics.
 - `alb_dns_name` - The DNS name of the load balancer.
-- `alb_canonical_hosted_zone_id` - The canonical hosted zone ID of the load balancer.
 - `alb_zone_id` - The canonical hosted zone ID of the load balancer (to be used in a Route 53 Alias record).
 - `default_target_group_arn` - Default target group's ARN (ID).
+
+Breaking changes
+----------------
+As of version 2.0.0 of this module, the `alb_canonical_hosted_zone_id` output has been removed.  The `alb_zone_id` output can be used instead.
