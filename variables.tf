@@ -83,6 +83,11 @@ variable "target_health_check_port" {
   default     = "80"
 }
 
+variable "target_health_check_matcher" {
+  description = "(Optional) The HTTP codes to use when checking for a successful response from a target. Defaults to 200. You can specify multiple values (for example, \"200,202\") or a range of values (for example, \"200-299\")."
+  default     = "200"
+}
+
 # Stickiness for the default HTTP listener's target group
 variable "http_stickiness" {
   description = "(Optional) If true, enables stickiness"
