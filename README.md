@@ -25,7 +25,9 @@ module "alb" {
    access_logs_bucket = "my-alb-logs-bucket"
    access_logs_prefix = "alb_logs"
    http_stickiness = true
-
+   target_health_check_path = "/healthcheck.php"
+   target_health_check_port = "80"
+   target_health_check_matcher = "200,302"
 }
 
 module "target_group" {
@@ -65,14 +67,19 @@ Variables
 - `enable_deletion_protection` - If true, deletion of the load balancer will be disabled via the AWS API. This will prevent Terraform from deleting the load balancer. Defaults to false.
 - `access_logs_bucket` - The S3 bucket name to store the logs in.
 - `access_logs_prefix` - The S3 bucket prefix. Logs are stored in the root if not configured
-- `http_stickiness` - If true, enable stickiness for the default HTTP/s listener's target group (default `false`)
-- `deregistration_delay` - Sets the delay the Load Balancer uses before moving a machine from deregistered to unused.
 
 
 _Below variables are used to configure default target group and listeners:_
 
 - `certificate_arn` - ARN of the certificate to use for HTTPS listner. Required if `enable_https_listener` is `true`.
 - `vpc_id` - Required if `enable_http_listener` or `enable_https_listener` is `true`.  The identifier of the VPC in which to create the target group.
+- `health_check_interval` - The approximate amount of time, in seconds, between health checks of an individual target. Minimum value 5 seconds, Maximum value 300 seconds. Default 30 seconds.
+- `target_health_check_path` - The destination for the health check request. Default /.
+- `target_health_check_port` - The port to use to connect with the target. Valid values are either ports 1-65536, or traffic-port. Defaults to traffic-port.
+- `target_health_check_matcher` - The HTTP codes to use when checking for a successful response from a target. Defaults to 200. You can specify multiple values (for example, `200,202`) or a range of values (for example, `200-299`).
+- `http_stickiness` - If true, enable stickiness for the default HTTP/s listener's target group (default `false`)
+- `deregistration_delay` - Sets the delay the Load Balancer uses before moving a machine from deregistered to unused.
+
 
 Outputs
 -------
