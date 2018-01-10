@@ -4,13 +4,13 @@
 #   arn_suffix - The ARN suffix for use with CloudWatch Metrics.
 
 output "alb_target_group_id" {
-  value = "${aws_alb_target_group.alb_target_group.id}"
+  value = "${element(aws_alb_target_group.alb_target_group.*.id, 0)}"
 }
 
 output "alb_target_group_arn" {
-  value = "${aws_alb_target_group.alb_target_group.arn}"
+  value = "${element(aws_alb_target_group.alb_target_group.*.arn, 0)}"
 }
 
 output "alb_target_group_arn_suffix" {
-  value = "${aws_alb_target_group.alb_target_group.arn_suffix}"
+  value = "${element(aws_alb_target_group.alb_target_group.*.arn_suffix, 0)}"
 }
