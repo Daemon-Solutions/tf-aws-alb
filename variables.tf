@@ -108,3 +108,18 @@ variable "deregistration_delay" {
   description = "(Optional) The amount time for Elastic Load Balancing to wait before changing the state of a deregistering target from draining to unused. The range is 0-3600 seconds."
   default     = "300"
 }
+
+variable "health_check_interval" {
+  description = "(Optional) The approximate amount of time, in seconds, between health checks of an individual target. Minimum value 5 seconds, Maximum value 300 seconds."
+  default     = "5"
+}
+
+variable "health_check_healthy_threshold" {
+  description = "(Optional) The number of consecutive health checks successes required before considering an unhealthy target healthy."
+  default     = "2"
+}
+
+variable "health_check_unhealthy_threshold" {
+  description = "(Optional) The number of consecutive health check failures required before considering the target unhealthy."
+  default     = "2"
+}

@@ -89,20 +89,23 @@
   */
 
 module "http_target_group" {
-  is_enabled                 = "${var.enable_http_listener == 1 || var.enable_https_listener == 1 ? 1 : 0 }"
-  source                     = "./target_group"
-  envname                    = "${var.envname}"
-  service                    = "${var.service}"
-  target_name                = "${var.envname}-${var.service}-http-tg"
-  vpc_id                     = "${var.vpc_id}"
-  target_port                = "${var.target_port}"
-  health_check_port          = "${var.target_health_check_port}"
-  health_check_path          = "${var.target_health_check_path}"
-  health_check_matcher       = "${var.target_health_check_matcher}"
-  stickiness                 = "${var.http_stickiness}"
-  stickiness_type            = "${var.http_stickiness_type}"
-  stickiness_cookie_duration = "${var.http_stickiness_cookie_duration}"
-  deregistration_delay       = "${var.deregistration_delay}"
+  is_enabled                       = "${var.enable_http_listener              =  = 1 || var.enable_https_listener =  = 1 ? 1 : 0 }"
+  source                           = "./target_group"
+  envname                          = "${var.envname}"
+  service                          = "${var.service}"
+  target_name                      = "${var.envname}-${var.service}-http-tg"
+  vpc_id                           = "${var.vpc_id}"
+  target_port                      = "${var.target_port}"
+  health_check_port                = "${var.target_health_check_port}"
+  health_check_path                = "${var.target_health_check_path}"
+  health_check_matcher             = "${var.target_health_check_matcher}"
+  health_check_interval            = "${var.health_check_interval}"
+  health_check_healthy_threshold   = "${var.health_check_healthy_threshold}"
+  health_check_unhealthy_threshold = "${var.health_check_unhealthy_threshold}"
+  stickiness                       = "${var.http_stickiness}"
+  stickiness_type                  = "${var.http_stickiness_type}"
+  stickiness_cookie_duration       = "${var.http_stickiness_cookie_duration}"
+  deregistration_delay             = "${var.deregistration_delay}"
 }
 
 module "http_listener" {
