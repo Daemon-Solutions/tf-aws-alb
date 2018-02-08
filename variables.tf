@@ -114,6 +114,11 @@ variable "health_check_interval" {
   default     = "5"
 }
 
+variable "health_check_timeout" {
+  description = "(Optional) The amount of time, in seconds, during which no response means a failed health check."
+  default     = "3"
+}
+
 variable "health_check_healthy_threshold" {
   description = "(Optional) The number of consecutive health checks successes required before considering an unhealthy target healthy."
   default     = "2"
