@@ -32,12 +32,12 @@ variable "subnets" {
 }
 
 variable "idle_timeout" {
-  description = "The time in seconds that the connection is allowed to be idle. Default: 60"
+  description = "The time in seconds that the connection is allowed to be idle."
   default     = "60"
 }
 
 variable "enable_deletion_protection" {
-  description = "If true, deletion of the load balancer will be disabled via the AWS API. This will prevent Terraform from deleting the load balancer. Defaults to false"
+  description = "If true, deletion of the load balancer will be disabled via the AWS API. This will prevent Terraform from deleting the load balancer."
   default     = false
 }
 
@@ -74,17 +74,17 @@ variable "target_port" {
 }
 
 variable "target_health_check_path" {
-  description = " The destination for the health check request. Default /."
+  description = " The destination for the health check request."
   default     = "/"
 }
 
 variable "target_health_check_port" {
-  description = "The port to use to connect with the target. Valid values are either ports 1-65536, or traffic-port. Defaults to traffic-port."
+  description = "The port to use to connect with the target. Valid values are either ports 1-65536, or traffic-port."
   default     = "80"
 }
 
 variable "target_health_check_matcher" {
-  description = "(Optional) The HTTP codes to use when checking for a successful response from a target. Defaults to 200. You can specify multiple values (for example, \"200,202\") or a range of values (for example, \"200-299\")."
+  description = "(Optional) The HTTP codes to use when checking for a successful response from a target. You can specify multiple values (for example, \"200,202\") or a range of values (for example, \"200-299\")."
   default     = "200"
 }
 
@@ -100,11 +100,26 @@ variable "http_stickiness_type" {
 }
 
 variable "http_stickiness_cookie_duration" {
-  description = "(Optional) The time period, in seconds, during which requests from a client should be routed to the same target. After this time period expires, the load balancer-generated cookie is considered stale. The range is 1 second to 1 week (604800 seconds). The default value is 1 day (86400 seconds)."
+  description = "(Optional) The time period, in seconds, during which requests from a client should be routed to the same target. After this time period expires, the load balancer-generated cookie is considered stale. The range is 1 second to 1 week (604800 seconds)."
   default     = "86400"
 }
 
 variable "deregistration_delay" {
-  description = "(Optional) The amount time for Elastic Load Balancing to wait before changing the state of a deregistering target from draining to unused. The range is 0-3600 seconds. The default value is 300 seconds."
+  description = "(Optional) The amount time for Elastic Load Balancing to wait before changing the state of a deregistering target from draining to unused. The range is 0-3600 seconds."
   default     = "300"
+}
+
+variable "health_check_interval" {
+  description = "(Optional) The approximate amount of time, in seconds, between health checks of an individual target. Minimum value 5 seconds, Maximum value 300 seconds."
+  default     = "5"
+}
+
+variable "health_check_healthy_threshold" {
+  description = "(Optional) The number of consecutive health checks successes required before considering an unhealthy target healthy."
+  default     = "2"
+}
+
+variable "health_check_unhealthy_threshold" {
+  description = "(Optional) The number of consecutive health check failures required before considering the target unhealthy."
+  default     = "2"
 }
