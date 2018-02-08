@@ -56,27 +56,7 @@
   * ```
   *
   *
-  * resource "aws_alb" "alb" {
-  *   name                       = "${var.name}-alb"
-  *   internal                   = "${var.internal}"
-  *   security_groups            = ["${var.security_groups}"]
-  *   subnets                    = ["${var.subnets}"]
-  *   idle_timeout               = "${var.idle_timeout}"
-  *   enable_deletion_protection = "${var.enable_deletion_protection}"
-  *
-  *   access_logs {
-  *     enabled = "${var.access_logs_enabled}"
-  *     bucket  = "${var.access_logs_bucket}"
-  *     prefix  = "${var.access_logs_prefix}"
-  *   }
-  *
-  *   tags {
-  *     Name        = "${var.name}"
-  *     Environment = "${var.envname}"
-  *     Service     = "${var.service}"
-  *   }
-  * }
-  *
+ *
   * Breaking changes
   * ----------------
   * As of version 2.0.0 of this module, the `alb_canonical_hosted_zone_id` output has been removed.  The `alb_zone_id` output can be used instead.
@@ -87,6 +67,27 @@
   * If you have modified variables or this README you should generate by running `terraform-docs md . > README.md`
   *
   */
+
+resource "aws_alb" "alb" {
+  name                       = "${var.name}-alb"
+  internal                   = "${var.internal}"
+  security_groups            = ["${var.security_groups}"]
+  subnets                    = ["${var.subnets}"]
+  idle_timeout               = "${var.idle_timeout}"
+  enable_deletion_protection = "${var.enable_deletion_protection}"
+
+  access_logs {
+    enabled = "${var.access_logs_enabled}"
+    bucket  = "${var.access_logs_bucket}"
+    prefix  = "${var.access_logs_prefix}"
+  }
+
+  tags {
+    Name        = "${var.name}"
+    Environment = "${var.envname}"
+    Service     = "${var.service}"
+  }
+}
 
 module "http_target_group" {
   is_enabled                       = "${var.enable_http_listener == 1 || var.enable_https_listener == 1 ? 1 : 0 }"
@@ -100,6 +101,7 @@ module "http_target_group" {
   health_check_path                = "${var.target_health_check_path}"
   health_check_matcher             = "${var.target_health_check_matcher}"
   health_check_interval            = "${var.health_check_interval}"
+  health_check_timeout             = "${var.health_check_timeout}"
   health_check_healthy_threshold   = "${var.health_check_healthy_threshold}"
   health_check_unhealthy_threshold = "${var.health_check_unhealthy_threshold}"
   stickiness                       = "${var.http_stickiness}"
