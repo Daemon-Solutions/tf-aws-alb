@@ -59,7 +59,16 @@
  *
   * Breaking changes
   * ----------------
-  * As of version 2.0.0 of this module, the `alb_canonical_hosted_zone_id` output has been removed.  The `alb_zone_id` output can be used instead.
+  *
+  * As of version 3.0.0 of this module the default is to only support TLS 1.1 and
+  * above.
+  * (ELBSecurityPolicy-TLS-1-1-2017-01).  When upgrading if you need to continue
+  * to use the previous policy specify
+  * `listener_ssl_policy` `ELBSecurityPolicy-TLS-1-0-2015-04`
+  * Note that TLS 1.0 must be disabled after June 2018 to pass PCI compliance.
+  *
+  * As of version 2.0.0 of this module, the `alb_canonical_hosted_zone_id` output
+  * has been removed.  The `alb_zone_id` output can be used instead.
   *
   * Modifying variables
   * -------------------
@@ -123,6 +132,7 @@ module "https_listener" {
   listener_port            = "443"
   listener_protocol        = "HTTPS"
   listener_certificate_arn = "${var.certificate_arn}"
+  listener_ssl_policy      = "${var.listener_ssl_policy}"
   load_balancer_arn        = "${aws_alb.alb.arn}"
   target_group_arn         = "${module.http_target_group.alb_target_group_arn}"
 }

@@ -55,30 +55,19 @@ output "default_target_group_arn" {
 ```
 
 
-resource "aws_alb" "alb" {
-  name                       = "${var.name}-alb"
-  internal                   = "${var.internal}"
-  security_groups            = ["${var.security_groups}"]
-  subnets                    = ["${var.subnets}"]
-  idle_timeout               = "${var.idle_timeout}"
-  enable_deletion_protection = "${var.enable_deletion_protection}"
-
-  access_logs {
-    enabled = "${var.access_logs_enabled}"
-    bucket  = "${var.access_logs_bucket}"
-    prefix  = "${var.access_logs_prefix}"
-  }
-
-  tags {
-    Name        = "${var.name}"
-    Environment = "${var.envname}"
-    Service     = "${var.service}"
-  }
-}
 
 Breaking changes
 ----------------
-As of version 2.0.0 of this module, the `alb_canonical_hosted_zone_id` output has been removed.  The `alb_zone_id` output can be used instead.
+
+As of version 3.0.0 of this module the default is to only support TLS 1.1 and
+above.
+(ELBSecurityPolicy-TLS-1-1-2017-01).  When upgrading if you need to continue
+to use the previous policy specify
+`listener_ssl_policy` `ELBSecurityPolicy-TLS-1-0-2015-04`
+Note that TLS 1.0 must be disabled after June 2018 to pass PCI compliance.
+
+As of version 2.0.0 of this module, the `alb_canonical_hosted_zone_id` output
+has been removed.  The `alb_zone_id` output can be used instead.
 
 Modifying variables
 -------------------
@@ -102,12 +91,14 @@ If you have modified variables or this README you should generate by running `te
 | envname |  | - | yes |
 | health_check_healthy_threshold | (Optional) The number of consecutive health checks successes required before considering an unhealthy target healthy. | `2` | no |
 | health_check_interval | (Optional) The approximate amount of time, in seconds, between health checks of an individual target. Minimum value 5 seconds, Maximum value 300 seconds. | `5` | no |
+| health_check_timeout | (Optional) The amount of time, in seconds, during which no response means a failed health check. | `3` | no |
 | health_check_unhealthy_threshold | (Optional) The number of consecutive health check failures required before considering the target unhealthy. | `2` | no |
 | http_stickiness | (Optional) If true, enables stickiness | `false` | no |
 | http_stickiness_cookie_duration | (Optional) The time period, in seconds, during which requests from a client should be routed to the same target. After this time period expires, the load balancer-generated cookie is considered stale. The range is 1 second to 1 week (604800 seconds). | `86400` | no |
 | http_stickiness_type | (Required) The type of sticky sessions. The only current possible value is lb_cookie. | `lb_cookie` | no |
 | idle_timeout | The time in seconds that the connection is allowed to be idle. | `60` | no |
 | internal | If true, the ALB will be internal | `false` | no |
+| listener_ssl_policy | The name of the SSL Policy for the listener. See https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html for a list of policies. | `ELBSecurityPolicy-TLS-1-1-2017-01` | no |
 | name | The name of the ALB. This name must be unique within your AWS account, can have a maximum of 32 characters, must contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen. If not specified, Terraform will autogenerate a name beginning with tf-lb. | - | yes |
 | security_groups | A list of security group IDs to assign to the LB | `<list>` | no |
 | service |  | - | yes |
