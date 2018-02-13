@@ -50,7 +50,7 @@ variable "stickiness_cookie_duration" {
 ## Health check variables
 variable "health_check_interval" {
   description = "(Optional) The approximate amount of time, in seconds, between health checks of an individual target. Minimum value 5 seconds, Maximum value 300 seconds. Default 30 seconds."
-  default     = "30"
+  default     = "5"
 }
 
 variable "health_check_path" {
@@ -70,12 +70,12 @@ variable "health_check_protocol" {
 
 variable "health_check_timeout" {
   description = "(Optional) The amount of time, in seconds, during which no response means a failed health check. Defaults to 5 seconds."
-  default     = "5"
+  default     = "3"
 }
 
 variable "health_check_healthy_threshold" {
   description = "(Optional) The number of consecutive health checks successes required before considering an unhealthy target healthy. Defaults to 5."
-  default     = "5"
+  default     = "2"
 }
 
 variable "health_check_unhealthy_threshold" {
