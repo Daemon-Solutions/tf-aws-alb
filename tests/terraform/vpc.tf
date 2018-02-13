@@ -19,9 +19,6 @@ resource "aws_s3_bucket" "log_bucket" {
   ]
 }
 POLICY
-
-  // "020815009326", // ewmg management nonprod
-  // "520647867251" // ewmg management prod
 }
 
 resource "aws_security_group" "allow_all" {

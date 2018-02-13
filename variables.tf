@@ -58,6 +58,11 @@ variable "access_logs_prefix" {
 
 # Below variables are used to configure default target group and listeners
 
+variable "listener_ssl_policy" {
+  description = "The name of the SSL Policy for the listener. See https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html for a list of policies."
+  default     = "ELBSecurityPolicy-TLS-1-1-2017-01"
+}
+
 variable "certificate_arn" {
   description = "arn of the certificate to use for HTTPS listner"
   default     = ""
