@@ -1,10 +1,10 @@
-tf-aws-alb
-==========
+# tf-aws-alb
 
 AWS Application Load-Balancer (ALB) with s3 logging enabled - Terraform Module
 
-Usage
------
+## Usage
+
+### Basic Usage
 
 ```js
 provider "aws" {
@@ -29,35 +29,13 @@ module "alb" {
    target_health_check_port = "80"
    target_health_check_matcher = "200,302"
 }
-
-module "target_group" {
-   source = "../modules/tf-aws-alb/target_group"
-   envname = "dev"
-   service = "test"
-   target_name  = "tg-8080"
-   target_port = "8080"
-   vpc_id = "${var.vpc_id}"
-   stickiness  = true
-   health_check_path = "/status"
-}
-
-
-module "listener" {
-   source = "../modules/tf-aws-alb/listener"
-   load_balancer_arn = "${module.alb.alb_arn}"
-   listener_port = "8080"
-   target_group_arn = "${module.target_group.alb_target_group_arn}"
-}
-
-output "default_target_group_arn" {
-  value = "${module.alb.default_target_group_arn}"
-}
 ```
 
+### Advanced Usage
 
+If you need to use custom ports, you can call the listener and target_group submodules within this module directly.
 
-Breaking changes
-----------------
+## Breaking changes
 
 As of version 3.0.0 of this module the default is to only support TLS 1.1 and
 above.
@@ -69,8 +47,7 @@ Note that TLS 1.0 must be disabled after June 2018 to pass PCI compliance.
 As of version 2.0.0 of this module, the `alb_canonical_hosted_zone_id` output
 has been removed.  The `alb_zone_id` output can be used instead.
 
-Modifying variables
--------------------
+## Modifying variables
 
 If you have modified variables or this README you should generate by running `terraform-docs md . > README.md`
 
@@ -113,12 +90,12 @@ If you have modified variables or this README you should generate by running `te
 
 | Name | Description |
 |------|-------------|
-| alb_arn |  |
-| alb_arn_suffix |  |
-| alb_dns_name |  |
-| alb_id |  |
-| alb_zone_id |  |
-| default_http_listener_arn |  |
-| default_https_listener_arn |  |
-| default_target_group_arn |  |
+| alb_arn | The ARN of the load balancer (matches id). |
+| alb_arn_suffix | The ARN suffix for use with CloudWatch Metrics. |
+| alb_dns_name | The DNS name of the load balancer. |
+| alb_id | The ARN of the load balancer (matches arn). |
+| alb_zone_id | The canonical hosted zone ID of the load balancer (to be used in a Route 53 Alias record). |
+| default_http_listener_arn | ARN for the default HTTP listener |
+| default_https_listener_arn | ARN for the default HTTPS listener |
+| default_target_group_arn | ARN for the default target group |
 

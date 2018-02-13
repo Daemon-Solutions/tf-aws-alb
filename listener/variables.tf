@@ -19,7 +19,7 @@ variable "listener_protocol" {
 
 variable "listener_ssl_policy" {
   description = "(Optional) The name of the SSL Policy for the listener. Required if protocol is HTTPS."
-  default     = "ELBSecurityPolicy-2015-05"
+  default     = "ELBSecurityPolicy-TLS-1-1-2017-01"
 }
 
 variable "listener_certificate_arn" {
