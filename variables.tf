@@ -133,3 +133,9 @@ variable "health_check_unhealthy_threshold" {
   description = "(Optional) The number of consecutive health check failures required before considering the target unhealthy."
   default     = "2"
 }
+
+variable "tgtgroup_name" {
+  description = "(Optional) name of the tgt group to overide default value with"
+  type        = "string"
+  default     = "default"
+}
