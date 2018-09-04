@@ -80,7 +80,7 @@ module "http_target_group" {
   source                           = "./target_group"
   envname                          = "${var.envname}"
   service                          = "${var.service}"
-  target_name                      = "${var.target_group_name == "" ?  var.envname-var.service-http-tg : var.target_group_name}"
+  target_name                      = "${var.target_group_name == "" ?  "${var.envname}-${var.service}-http-tg" : var.target_group_name}"
   vpc_id                           = "${var.vpc_id}"
   target_port                      = "${var.target_port}"
   health_check_port                = "${var.target_health_check_port}"
