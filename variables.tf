@@ -137,5 +137,5 @@ variable "health_check_unhealthy_threshold" {
 variable "target_group_name" {
   description = "(Optional) name of the target group to overide default value with"
   type        = "string"
-  default     = "default"
+  default     = ""
 }
