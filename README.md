@@ -85,6 +85,7 @@ If you have modified variables or this README you should generate by running `te
 | target_health_check_port | The port to use to connect with the target. Valid values are either ports 1-65536, or traffic-port. | `80` | no |
 | target_port | The port on which targets receive traffic, unless overridden when registering a specific target | `80` | no |
 | vpc_id | (Required) The identifier of the VPC in which to create the target group. | `` | no |
+| target_group_name | (Optional) The name of the Target Group to override default value | `` | no |
 
 ## Outputs
 
