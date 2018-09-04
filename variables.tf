@@ -134,8 +134,8 @@ variable "health_check_unhealthy_threshold" {
   default     = "2"
 }
 
-variable "tgtgroup_name" {
-  description = "(Optional) name of the tgt group to overide default value with"
+variable "target_group_name" {
+  description = "(Optional) name of the target group to overide default value with"
   type        = "string"
   default     = "default"
 }
