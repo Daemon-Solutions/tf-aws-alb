@@ -63,6 +63,7 @@ If you have modified variables or this README you should generate by running `te
 | certificate_arn | arn of the certificate to use for HTTPS listner | `` | no |
 | deregistration_delay | (Optional) The amount time for Elastic Load Balancing to wait before changing the state of a deregistering target from draining to unused. The range is 0-3600 seconds. | `300` | no |
 | enable_deletion_protection | If true, deletion of the load balancer will be disabled via the AWS API. This will prevent Terraform from deleting the load balancer. | `false` | no |
+| enable | If false, the ALB services will not be provisioned | `true` | no |
 | enable_http_listener | If true, enable default HTTP target group and listener | `false` | no |
 | enable_https_listener | If true, enable default HTTPS target group and listener | `false` | no |
 | envname |  | - | yes |

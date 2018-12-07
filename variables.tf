@@ -1,6 +1,11 @@
 variable "envname" {}
 variable "service" {}
 
+variable "enabled" {
+  description = "Enable or disable the ALB."
+  default     = true
+}
+
 variable "name" {
   description = "The name of the ALB. This name must be unique within your AWS account, can have a maximum of 32 characters, must contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen. If not specified, Terraform will autogenerate a name beginning with tf-lb."
 }
