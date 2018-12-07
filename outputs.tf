@@ -27,15 +27,15 @@ output "alb_zone_id" {
 
 // ARN for the default target group
 output "default_target_group_arn" {
-  value = "${join("", module.http_target_group.*.alb_target_group_arn)}"
+  value = "${module.http_target_group.alb_target_group_arn}"
 }
 
 // ARN for the default HTTP listener
 output "default_http_listener_arn" {
-  value = "${join("", module.http_listener.*.alb_listener_arn)}"
+  value = "${module.http_listener.alb_listener_arn}"
 }
 
 // ARN for the default HTTPS listener
 output "default_https_listener_arn" {
-  value = "${join("", module.https_listener.*.alb_listener_arn)}"
+  value = "${module.https_listener.alb_listener_arn}"
 }
