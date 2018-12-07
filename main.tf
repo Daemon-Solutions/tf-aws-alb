@@ -77,7 +77,7 @@ resource "aws_alb" "alb" {
 }
 
 module "http_target_group" {
-  is_enabled                       = "${var.enabled && var.enable_http_listener == 1 || var.enable_https_listener == 1 ? 1 : 0 }"
+  is_enabled                       = "${var.enabled && (var.enable_http_listener || var.enable_https_listener)}"
   source                           = "./target_group"
   envname                          = "${var.envname}"
   service                          = "${var.service}"
@@ -100,7 +100,7 @@ module "http_target_group" {
 module "http_listener" {
   is_enabled        = "${var.enable_http_listener && var.enabled}"
   source            = "./listener"
-  load_balancer_arn = "${aws_alb.alb.arn}"
+  load_balancer_arn = "${join("", aws_alb.alb.*.arn)}"
   target_group_arn  = "${module.http_target_group.alb_target_group_arn}"
 }
 
@@ -111,6 +111,6 @@ module "https_listener" {
   listener_protocol        = "HTTPS"
   listener_certificate_arn = "${var.certificate_arn}"
   listener_ssl_policy      = "${var.listener_ssl_policy}"
-  load_balancer_arn        = "${aws_alb.alb.arn}"
+  load_balancer_arn        = "${join("", aws_alb.alb.*.arn)}"
   target_group_arn         = "${module.http_target_group.alb_target_group_arn}"
 }

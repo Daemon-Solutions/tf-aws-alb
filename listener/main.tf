@@ -1,5 +1,5 @@
 resource "aws_alb_listener" "alb_listener" {
-  count             = "${var.is_enabled}"
+  count             = "${var.is_enabled ? 1 : 0}"
   load_balancer_arn = "${var.load_balancer_arn}"
   port              = "${var.listener_port}"
   protocol          = "${var.listener_protocol}"
