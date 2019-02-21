@@ -37,6 +37,9 @@ If you need to use custom ports, you can call the listener and target_group subm
 
 ## Breaking changes
 
+As of version 4.0.0 of this module the module no longer appends '-alb' to the
+name of the ALB.
+
 As of version 3.0.0 of this module the default is to only support TLS 1.1 and
 above.
 (ELBSecurityPolicy-TLS-1-1-2017-01).  When upgrading if you need to continue
