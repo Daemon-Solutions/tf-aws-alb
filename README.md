@@ -37,6 +37,9 @@ If you need to use custom ports, you can call the listener and target_group subm
 
 ## Breaking changes
 
+As of version 4.0.0 of this module the module no longer appends '-alb' to the
+name of the ALB.
+
 As of version 3.0.0 of this module the default is to only support TLS 1.1 and
 above.
 (ELBSecurityPolicy-TLS-1-1-2017-01).  When upgrading if you need to continue
@@ -92,6 +95,7 @@ If you have modified variables or this README you should generate by running `te
 
 | Name | Description |
 |------|-------------|
+| alb_name | The name of the load balancer. |
 | alb_arn | The ARN of the load balancer (matches id). |
 | alb_arn_suffix | The ARN suffix for use with CloudWatch Metrics. |
 | alb_dns_name | The DNS name of the load balancer. |
