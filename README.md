@@ -92,6 +92,7 @@ If you have modified variables or this README you should generate by running `te
 
 | Name | Description |
 |------|-------------|
+| alb_name | The name of the load balancer. |
 | alb_arn | The ARN of the load balancer (matches id). |
 | alb_arn_suffix | The ARN suffix for use with CloudWatch Metrics. |
 | alb_dns_name | The DNS name of the load balancer. |

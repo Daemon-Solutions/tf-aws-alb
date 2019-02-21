@@ -1,5 +1,10 @@
 # Outputs
 
+// The name of the load balancer.
+output "alb_name" {
+  value = "${join("", aws_alb.alb.*.name)}"
+}
+
 // The ARN of the load balancer (matches arn).
 output "alb_id" {
   value = "${join("", aws_alb.alb.*.id)}"
