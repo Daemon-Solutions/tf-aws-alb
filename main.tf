@@ -21,7 +21,7 @@ resource "aws_alb" "alb" {
 }
 
 module "http_target_group" {
-  is_enabled                       = var.enabled && var.enable_http_listener || var.enable_https_listener
+  is_enabled                       = var.enabled && (var.enable_http_listener || var.enable_https_listener)
   source                           = "./target_group"
   envname                          = var.envname
   service                          = var.service
