@@ -1,7 +1,9 @@
 # Target group variables
-variable "envname" {}
+variable "envname" {
+}
 
-variable "service" {}
+variable "service" {
+}
 
 variable "is_enabled" {
   description = "This is used only when module is invoked from the main ALB module"
@@ -87,3 +89,4 @@ variable "health_check_matcher" {
   description = "(Optional) The HTTP codes to use when checking for a successful response from a target. Defaults to 200. You can specify multiple values (for example, \"200,202\") or a range of values (for example, \"200-299\")."
   default     = "200"
 }
+

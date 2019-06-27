@@ -4,13 +4,17 @@
 #   arn_suffix - The ARN suffix for use with CloudWatch Metrics.
 
 output "alb_target_group_id" {
-  value = "${element(concat(aws_alb_target_group.alb_target_group.*.id, list("")), 0)}"
+  value = element(concat(aws_alb_target_group.alb_target_group.*.id, [""]), 0)
 }
 
 output "alb_target_group_arn" {
-  value = "${element(concat(aws_alb_target_group.alb_target_group.*.arn, list("")), 0)}"
+  value = element(concat(aws_alb_target_group.alb_target_group.*.arn, [""]), 0)
 }
 
 output "alb_target_group_arn_suffix" {
-  value = "${element(concat(aws_alb_target_group.alb_target_group.*.arn_suffix, list("")), 0)}"
+  value = element(
+    concat(aws_alb_target_group.alb_target_group.*.arn_suffix, [""]),
+    0,
+  )
 }
+

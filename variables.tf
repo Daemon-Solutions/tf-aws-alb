@@ -1,5 +1,8 @@
-variable "envname" {}
-variable "service" {}
+variable "envname" {
+}
+
+variable "service" {
+}
 
 variable "enabled" {
   description = "Enable or disable the ALB."
@@ -26,7 +29,7 @@ variable "internal" {
 }
 
 variable "security_groups" {
-  type        = "list"
+  type        = list(string)
   description = "A list of security group IDs to assign to the LB"
   default     = []
 }
@@ -141,6 +144,7 @@ variable "health_check_unhealthy_threshold" {
 
 variable "target_group_name" {
   description = "(Optional) name of the target group to overide default value with"
-  type        = "string"
+  type        = string
   default     = ""
 }
+

@@ -37,6 +37,8 @@ If you need to use custom ports, you can call the listener and target_group subm
 
 ## Breaking changes
 
+As of version 5.0.0 of this module the module only supports Terraform 0.12.x and upwards.
+
 As of version 4.0.0 of this module the module no longer appends '-alb' to the
 name of the ALB.
 
