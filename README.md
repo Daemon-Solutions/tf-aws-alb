@@ -52,12 +52,6 @@ Note that TLS 1.0 must be disabled after June 2018 to pass PCI compliance.
 As of version 2.0.0 of this module, the `alb_canonical_hosted_zone_id` output
 has been removed.  The `alb_zone_id` output can be used instead.
 
-## Modifying variables
-
-If you have modified variables or this README you should generate by running `terraform-docs md . > README.md`
-
-
-
 ## Inputs
 
 | Name | Description | Default | Required |
