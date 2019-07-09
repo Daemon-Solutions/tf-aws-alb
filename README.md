@@ -86,6 +86,7 @@ has been removed.  The `alb_zone_id` output can be used instead.
 | target_port | The port on which targets receive traffic, unless overridden when registering a specific target | `80` | no |
 | vpc_id | (Required) The identifier of the VPC in which to create the target group. | `` | no |
 | target_group_name | (Optional) The name of the Target Group to override default value | `` | no |
+| tags | (Optional) map of tags to add to resources | `{}` | no |
 
 ## Outputs
 

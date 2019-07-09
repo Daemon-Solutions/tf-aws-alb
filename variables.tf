@@ -148,3 +148,8 @@ variable "target_group_name" {
   default     = ""
 }
 
+variable "tags" {
+  description = "(Optional) map of tags to add to resources"
+  type        = map
+  default     = {}
+}

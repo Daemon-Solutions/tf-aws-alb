@@ -13,7 +13,7 @@ resource "aws_alb" "alb" {
     prefix  = var.access_logs_prefix
   }
 
-  tags = {
+  tags = length(var.tags) > 0 ? var.tags : {
     Name        = var.name
     Environment = var.envname
     Service     = var.service
@@ -39,6 +39,7 @@ module "http_target_group" {
   stickiness_type                  = var.http_stickiness_type
   stickiness_cookie_duration       = var.http_stickiness_cookie_duration
   deregistration_delay             = var.deregistration_delay
+  tags                             = var.tags
 }
 
 module "http_listener" {
