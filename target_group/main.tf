@@ -24,7 +24,7 @@ resource "aws_alb_target_group" "alb_target_group" {
     cookie_duration = var.stickiness_cookie_duration
   }
 
-  tags = {
+  tags = length(var.tags) > 0 ? var.tags : {
     Name        = var.target_name
     Environment = var.envname
     Service     = var.service

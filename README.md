@@ -52,12 +52,6 @@ Note that TLS 1.0 must be disabled after June 2018 to pass PCI compliance.
 As of version 2.0.0 of this module, the `alb_canonical_hosted_zone_id` output
 has been removed.  The `alb_zone_id` output can be used instead.
 
-## Modifying variables
-
-If you have modified variables or this README you should generate by running `terraform-docs md . > README.md`
-
-
-
 ## Inputs
 
 | Name | Description | Default | Required |
@@ -92,6 +86,7 @@ If you have modified variables or this README you should generate by running `te
 | target_port | The port on which targets receive traffic, unless overridden when registering a specific target | `80` | no |
 | vpc_id | (Required) The identifier of the VPC in which to create the target group. | `` | no |
 | target_group_name | (Optional) The name of the Target Group to override default value | `` | no |
+| tags | (Optional) map of tags to add to resources | `{}` | no |
 
 ## Outputs
 
