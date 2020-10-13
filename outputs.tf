@@ -39,11 +39,6 @@ output "default_target_group_arn_suffix" {
   value = module.http_target_group.alb_target_group_arn_suffix
 }
 
-// The ARN suffix for use with CloudWatch Metrics.
-output "default_target_group_arn_suffix" {
-  value = "${module.http_target_group.alb_target_group_arn_suffix}"
-}
-
 // ARN for the default HTTP listener
 output "default_http_listener_arn" {
   value = module.http_listener.alb_listener_arn
